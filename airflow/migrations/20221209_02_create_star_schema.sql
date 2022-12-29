@@ -1,25 +1,5 @@
 CREATE SCHEMA ecommerce;
 
-DROP TABLE IF EXISTS ecommerce.dim_customers;
-CREATE TABLE ecommerce.dim_customers
-(
-    dim_product_id SERIAL PRIMARY KEY NOT NULL,
-    product_id    VARCHAR(15) NOT NULL,
-    product_name  VARCHAR(50) NOT NULL,
-    url           VARCHAR(300),
-    listing_price INT,
-    sale_price    INT,
-    discount      NUMERIC(19, 4) DEFAULT 0.0000,
-    brand         VARCHAR(20),
-    description   VARCHAR(500),
-    rating        DOUBLE PRECISION,
-    reviews       INT,
-    images        VARCHAR(500),
-    row_created      timestamp default getdate() not null,
-    row_last_updated timestamp default getdate() not null
-);
-
-
 DROP TABLE IF EXISTS ecommerce.dim_ecommerce;
 CREATE TABLE ecommerce.dim_ecommerce
 (
@@ -29,7 +9,6 @@ CREATE TABLE ecommerce.dim_ecommerce
     row_created      timestamp default getdate() not null,
     row_last_updated timestamp default getdate() not null
 );
-
 
 DROP TABLE IF EXISTS ecommerce.dim_customers;
 CREATE TABLE ecommerce.dim_customers
@@ -49,7 +28,6 @@ CREATE TABLE ecommerce.dim_customers
     row_last_updated timestamp default getdate() not null
 );
 
-
 DROP TABLE IF EXISTS ecommerce.dim_order_statuses;
 CREATE TABLE ecommerce.dim_order_statuses
 (
@@ -59,7 +37,6 @@ CREATE TABLE ecommerce.dim_order_statuses
     row_created      timestamp default getdate() not null,
     row_last_updated timestamp default getdate() not null
 );
-
 
 DROP TABLE IF EXISTS ecommerce.dim_orderline;
 CREATE TABLE ecommerce.dim_orderline
@@ -74,7 +51,6 @@ CREATE TABLE ecommerce.dim_orderline
     row_last_updated timestamp default getdate() not null
 );
 
-
 DROP TABLE IF EXISTS ecommerce.dim_order;
 CREATE TABLE ecommerce.dim_order
 (
@@ -86,7 +62,6 @@ CREATE TABLE ecommerce.dim_order
     row_created      timestamp default getdate() not null,
     row_last_updated timestamp default getdate() not null
 );
-
 
 DROP TABLE IF EXISTS ecommerce.fact_order;
 CREATE TABLE ecommerce.fact_order
